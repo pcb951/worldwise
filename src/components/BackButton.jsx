@@ -7,7 +7,7 @@ function BackButton() {
     <Button
       onClick={(e) => {
         e.preventDefault();
-        navigate(-1);
+        navigate("/app/cities");
       }}
       type="back"
     >

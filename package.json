@@ -8,11 +8,12 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch data/cities.json --port 5000"
+    "server": "json-server --watch data/cities.json --port 8000"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0-rc.1",
+    "react-dom": "^19.0.0-rc.1",
+    "react-leaflet": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -33,6 +34,7 @@
     "leaflet": "^1.9.4",
     "prettier": "3.4.2",
     "prettier-eslint": "^16.3.0",
+    "react-datepicker": "^7.5.0",
     "react-router": "^7.1.1",
     "react-router-dom": "^7.1.1",
     "vite": "^6.0.5",

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 const CitiesContext = createContext();
-const URL = "http://localhost:5000";
+const URL = "http://localhost:8000";
 
 function CitiesProvider({ children }) {
   const [isLoading, setLoading] = useState(false);
@@ -31,14 +31,56 @@ function CitiesProvider({ children }) {
       const data = await res.json();
       setCurrentCity(data);
     } catch {
-      console.error("Failed to fetch data");
+      console.error("Failed to fetch data with id");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function createCity(newCity) {
+    try {
+      setLoading(true);
+      const res = await fetch(`${URL}/cities`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCity),
+      });
+      const data = await res.json();
+      setCities((cities) => [...cities, data]);
+    } catch {
+      console.error("Failed to create city");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function deleteCity(id) {
+    try {
+      setLoading(true);
+      await fetch(`${URL}/cities/${id}`, {
+        method: "DELETE",
+      });
+      setCities((cities) => cities.filter((city) => city.id != id));
+    } catch {
+      console.error("Failed to DELETE city");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <CitiesContext.Provider value={{ cities, isLoading, getCity, currentCity }}>
+    <CitiesContext.Provider
+      value={{
+        cities,
+        isLoading,
+        getCity,
+        currentCity,
+        createCity,
+        deleteCity,
+      }}
+    >
       {children}
     </CitiesContext.Provider>
   );
