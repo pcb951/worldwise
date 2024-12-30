@@ -1,3 +1,16 @@
 {
-  "cities": []
+  "cities": [
+    {
+      "id": "53a0",
+      "cityName": "Thakurgaon",
+      "country": "Bangladesh",
+      "date": "2024-12-30T09:28:29.960Z",
+      "notes": "Test Place!",
+      "position": {
+        "lat": "26.02593611383701",
+        "lng": "88.47427368164062"
+      },
+      "emoji": "🇧🇩"
+    }
+  ]
 }
